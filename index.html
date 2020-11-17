@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="jquery.min.js" ></script>
+	</head>
+	<body>
+		
+		<b>
+			<h1>必看必看</h1>
+			
+食用方法
+,
+复制生成的代码
+,
+到考试页面 ctrl + shift + i 控制台 输入 代码 回车 ok
+，
+<h3>记住 每次 要 ，改， 对， 错，空， 批次id， 问卷id， roomid， 结束时间，</h3>
+
+不然直接GG
+。
+
+</b>
+	<br />
+	pc_id
+	<select id="pc_id">
+		<option value="1">专业单词第一批</option>
+		<option value="2">专业单词第二批</option>
+		<option value="11">普通单词第一批</option>
+		<option value="12">普通单词第二批</option>
+		<option value="13">普通单词第三批</option>
+		<option value="14">体验单词</option>
+		<option value="15">专业单词第三批</option>
+		<option value="16">五十音图</option>
+	</select>
+	
+	<br />
+	code<input id="wj_id"/>
+	<br />
+	room_id<input id="room_id"/>
+	<br />
+	dui<input id="dui"/>
+	<br />
+	error<input id="error"/>
+	<br />
+	kong<input id="kong"/>
+	<br />
+	考试结束时间
+	<input  id="setKsStartDate" />
+	<button onclick="getDate()">获取当前时间</button>
+	<br />
+	<button onclick="test()">作弊！！！</button>
+<p id="ppp"></p>
+	</body>
+	<script>
+
+		function getDate(){
+				var myDate = new Date();
+				var year = myDate.getFullYear(); //获取当前年
+				var month = myDate.getMonth() + 1; //获取当前月
+				var date = myDate.getDate(); //获取当前日
+				var h = myDate.getHours(); //获取当前小时数(0-23)
+				var m = myDate.getMinutes(); //获取当前分钟数(0-59)
+				var s = myDate.getSeconds();
+				systemDate = year + '-' + getNow(month) + "-" + getNow(date) + " " +
+					getNow(h) + ':' + getNow(m) + ":" + getNow(s);
+					$("#setKsStartDate").val(systemDate);
+					
+		}
+		
+		function getNow(s) {
+					return s < 10 ? '0' + s : s;
+			}
+		
+		function test(){
+	
+			var str1 = "dui=" + $("#dui").val() + "&error=" + $("#error").val() + "&kong=" + $("#kong").val() + "&pc_id=" + $("#pc_id").val() + "&code=" + $("#wj_id").val() + "&roomid=" + $("#room_id").val() +"&date=" +$("#setKsStartDate").val(); 
+			var str = '$.ajax({type: "post",url: "../add/ksjl?'+str1+'",dataType: "json",success: function(jsonStr) {if(jsonStr == -1) {window.location="../login.jsp";return;}if(jsonStr.success) {} else {alert("网络错误");}},});';
+			$("#ppp").html(str)
+		}
+	</script>
+</html>
