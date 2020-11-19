@@ -55,6 +55,34 @@
 	</body>
 	<script>
 
+$("#pc_id").change(function(){
+	var pcid = $("#pc_id").val();
+	if(pcid == 1){
+		$("#dui").val(99);
+	}
+	if(pcid == 2){
+		$("#dui").val(90);
+	}
+	if(pcid == 11){
+		$("#dui").val(99);
+	}
+	if(pcid == 12){
+		$("#dui").val(100);
+	}
+	if(pcid == 13){
+		$("#dui").val(100);
+	}
+	if(pcid == 14){
+		$("#dui").val(20);
+	}
+	if(pcid == 15){
+		$("#dui").val(65);
+	}
+	if(pcid == 16){
+		$("#dui").val(71);
+	}
+});
+
 		function getDate(){
 				var myDate = new Date();
 				var year = myDate.getFullYear(); //获取当前年
